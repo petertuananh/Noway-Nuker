@@ -1,7 +1,7 @@
 const {
     MessageEmbed
 } = require('discord.js');
-const config = require('../../JSON/config.json');
+const { red, greenBright, cyan, yellow } = require("chalk");
 module.exports  = {
     name: "massrole",
     aliases: [`msrole`],
@@ -19,8 +19,8 @@ module.exports  = {
             const name = roleName || 'Noway nuker'
             if (message.guild.roles.cache.size === 250) break;
             message.guild.roles.create({ name: name, color: "RANDOM", position: i++ })
-            console.log(`[Success] Created role: ${name}!`)
+            console.log(greenBright(`[Success] Created role: ${name}!`))
         }
-        return console.log(`[Success] Finished task!`)
+        return console.log(yellow((`[Success] Finished task!`)))
     }
 }

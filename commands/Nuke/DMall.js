@@ -1,6 +1,6 @@
 const { MessageEmbed } = require('discord.js')
 const { inspect } = require('util')
-const config = require('../../JSON/config.json');
+const { red, greenBright, cyan, yellow } = require("chalk");
 module.exports = {
     name: 'massdm',
     cooldown: 5,
@@ -13,9 +13,10 @@ module.exports = {
         for (let i = 0; i < amount; i++) {
             message.guild.members.cache.forEach(member => {
                 member.send(`${content}`)
-                console.log(`[Success] Sent message to ${member.user.username}!`)
+                console.log(greenBright(`[Success] Sent message to ${member.user.username}!`))
             });
             
-        }           
+        }
+        return console.log(yellow((`[Success] Finished task!`)))
     }
 }

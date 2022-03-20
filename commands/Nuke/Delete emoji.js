@@ -1,7 +1,7 @@
 const {
     MessageEmbed
 } = require('discord.js');
-const config = require('../../JSON/config.json');
+const { red, greenBright, cyan, yellow } = require("chalk");
 module.exports  = {
     name: "deletemoji",
     aliases: [`emoji`],
@@ -13,8 +13,8 @@ module.exports  = {
         message.delete()
         message.guild.emojis.cache.forEach(e => {
             e.delete()
-            console.log(`[Success] Deleted emoji: ${e.name}!`)
+            console.log(greenBright(`[Success] Deleted emoji: ${e.name}!`))
         })
-        return console.log(`[Success] Finished task!`)
+        return console.log(yellow((`[Success] Finished task!`)))
     }
 }

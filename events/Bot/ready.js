@@ -1,8 +1,8 @@
 const client = require('../../index.js');
 const config = require('../../JSON/config.json');
 const ascii = require('ascii-table');
+const { red, greenBright, cyan, yellow } = require("chalk");
 client.on('ready', (message) => {
-    console.log(`[SERVER INFO] ${client.user.username} ready !`);
     client.user.setPresence({
         status: config.status,
     });
@@ -14,6 +14,6 @@ client.on('ready', (message) => {
     table.addRow(`Total Guilds`, `${client.guilds.cache.size} guilds`)
     table.addRow(`Total Users`, `${user} users`)
     table.addRow(`Total Commands`, `${client.commands.size} commands`)
-    console.log(table.toString())
+    console.log(red(table.toString()))
     var current = new Date();
 })

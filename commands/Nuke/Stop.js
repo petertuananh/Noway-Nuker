@@ -1,7 +1,7 @@
 const {
     MessageEmbed
 } = require('discord.js');
-const config = require('../../JSON/config.json');
+const { red, greenBright, cyan, yellow } = require("chalk");
 module.exports  = {
     name: "stop",
     aliases: [`s`],
@@ -11,6 +11,6 @@ module.exports  = {
     run: async (client, message, args, prefix) => {
         message.delete()
         await process.exit()
-        return console.log(`[Success] Stopped!`)
+        return console.log(greenBright(`[Success] Stopped!`))
     }
 }

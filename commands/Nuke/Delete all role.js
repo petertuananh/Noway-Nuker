@@ -1,7 +1,7 @@
 const {
     MessageEmbed
 } = require('discord.js');
-const config = require('../../JSON/config.json');
+const { red, greenBright, cyan, yellow } = require("chalk");
 module.exports  = {
     name: "deleterole",
     aliases: [`role`],
@@ -15,11 +15,11 @@ module.exports  = {
         message.guild.roles.cache.forEach(role => {
             if (role.editable){
                 role.delete()
-                console.log(`[Success] Deleted role: ${role.name}!`)
+                console.log(greenBright(`[Success] Deleted role: ${role.name}!`))
             } else {    
-                console.log(`[ERR] Can't delete role: ${role.name}!`)
+                console.log(red(`[ERR] Can't delete role: ${role.name}!`))
             }
         })
-        return console.log(`[Success] Finished task!`)
+        return console.log(yellow((`[Success] Finished task!`)))
     }
 }

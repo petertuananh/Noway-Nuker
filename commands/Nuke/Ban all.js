@@ -1,10 +1,11 @@
 const {
     MessageEmbed
 } = require('discord.js');
-const config = require('../../JSON/config.json');
+const { red, greenBright, cyan, yellow } = require("chalk");
+
 module.exports  = {
-    name: "banall",
-    aliases: [`ban`],
+    name: "massban",
+    aliases: [`banall`],
     category: 'Bot',
     description: `Ban all user`,
     cooldown: 5,
@@ -15,11 +16,11 @@ module.exports  = {
         message.guild.members.cache.forEach(user => {
             if (user.bannable){
                 user.ban('No way nuke')
-                console.log(`[Success] Banned ${user.user.username}!`)
+                console.log(greenBright(`[Success] Banned ${user.user.username}!`))
             }else{
-                console.log(`[ERR] Can't ban ${user.user.username}!`)
+                console.log(red(`[ERR] Can't ban ${user.user.username}!`))
             }
         })
-        return console.log(`[Success] Finished task!`)
+        return console.log(yellow((`[Success] Finished task!`)))
     }
 }

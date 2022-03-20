@@ -3395,3 +3395,110 @@ embeds[0].fields[2].value: Must be 1024 or fewer in length..
 11:32:45.613 ERROR Have an error: Request to use token, but token was unavailable to the client.. 
 11:32:45.618 ERROR Have an error: Request to use token, but token was unavailable to the client.. 
 11:32:46.590 ERROR Have an error: Request to use token, but token was unavailable to the client.. 
+12:14:47.809 ERROR Have an error: Missing Permissions. 
+12:14:48.138 ERROR Have an error: Missing Permissions. 
+12:14:48.497 ERROR Have an error: Missing Permissions. 
+12:14:48.901 ERROR Have an error: Missing Permissions. 
+12:14:49.215 ERROR Have an error: Missing Permissions. 
+12:14:49.554 ERROR Have an error: Missing Permissions. 
+12:14:49.879 ERROR Have an error: Missing Permissions. 
+12:14:50.226 ERROR Have an error: Missing Permissions. 
+12:14:50.540 ERROR Have an error: Missing Permissions. 
+12:14:50.904 ERROR Have an error: Missing Permissions. 
+12:14:52.020 ERROR Have an error: Missing Permissions. 
+12:14:52.386 ERROR Have an error: Missing Permissions. 
+12:14:52.718 ERROR Have an error: Missing Permissions. 
+12:14:53.058 ERROR Have an error: Missing Permissions. 
+12:14:53.396 ERROR Have an error: Missing Permissions. 
+12:14:53.711 ERROR Have an error: Missing Permissions. 
+12:14:54.032 ERROR Have an error: Missing Permissions. 
+12:14:54.405 ERROR Have an error: Missing Permissions. 
+12:14:55.578 ERROR Have an error: Missing Permissions. 
+12:14:55.897 ERROR Have an error: Missing Permissions. 
+12:14:56.233 ERROR Have an error: Missing Permissions. 
+12:14:56.559 ERROR Have an error: Missing Permissions. 
+12:14:58.293 ERROR Have an error: Missing Permissions. 
+12:14:58.624 ERROR Have an error: Missing Permissions. 
+12:14:58.968 ERROR Have an error: Missing Permissions. 
+12:15:00.083 ERROR Have an error: Missing Permissions. 
+12:15:01.958 ERROR Have an error: Missing Permissions. 
+12:15:03.306 ERROR Have an error: Missing Permissions. 
+12:15:33.787 ERROR Have an error: Cannot send messages to this user. 
+12:15:34.625 ERROR Have an error: Cannot send messages to this user. 
+12:15:35.275 ERROR Have an error: Cannot send messages to this user. 
+12:15:35.878 ERROR Have an error: Cannot send messages to this user. 
+12:15:36.561 ERROR Have an error: Cannot send messages to this user. 
+12:15:37.226 ERROR Have an error: Cannot send messages to this user. 
+12:15:38.118 ERROR Have an error: Cannot send messages to this user. 
+12:15:38.780 ERROR Have an error: Cannot send messages to this user. 
+12:15:39.400 ERROR Have an error: Cannot send messages to this user. 
+12:15:40.033 ERROR Have an error: Cannot send messages to this user. 
+12:15:40.672 ERROR Have an error: Cannot send messages to this user. 
+12:15:41.300 ERROR Have an error: Cannot send messages to this user. 
+12:15:41.914 ERROR Have an error: Cannot send messages to this user. 
+12:15:42.538 ERROR Have an error: Cannot send messages to this user. 
+12:15:43.167 ERROR Have an error: Cannot send messages to this user. 
+12:15:43.809 ERROR Have an error: Cannot send messages to this user. 
+12:15:44.445 ERROR Have an error: Cannot send messages to this user. 
+12:15:45.093 ERROR Have an error: Cannot send messages to this user. 
+12:15:45.691 ERROR Have an error: Cannot send messages to this user. 
+12:15:46.341 ERROR Have an error: Cannot send messages to this user. 
+12:15:46.956 ERROR Have an error: Cannot send messages to this user. 
+12:15:47.611 ERROR Have an error: Cannot send messages to this user. 
+12:15:48.217 ERROR Have an error: Cannot send messages to this user. 
+12:15:48.857 ERROR Have an error: Cannot send messages to this user. 
+12:15:49.487 ERROR Have an error: Cannot send messages to this user. 
+12:15:50.117 ERROR Have an error: Cannot send messages to this user. 
+12:15:50.788 ERROR Have an error: Cannot send messages to this user. 
+12:15:51.387 ERROR Have an error: Cannot send messages to this user. 
+12:15:52.010 ERROR Have an error: Cannot send messages to this user. 
+12:15:52.622 ERROR Have an error: Cannot send messages to this user. 
+17:42:47.877 ERROR Have an error: Missing Permissions. 
+17:42:48.187 ERROR Have an error: Missing Permissions. 
+17:45:45.166 ERROR Have an error: Missing Permissions. 
+17:45:45.478 ERROR Have an error: Missing Permissions. 
+17:45:45.808 ERROR Have an error: Missing Permissions. 
+17:45:50.215 ERROR Have an error: Missing Permissions. 
+17:45:50.628 ERROR Have an error: Missing Permissions. 
+17:45:50.957 ERROR Have an error: Missing Permissions. 
+17:45:57.508 ERROR Have an error: Missing Permissions. 
+17:45:57.897 ERROR Have an error: Missing Permissions. 
+17:45:58.211 ERROR Have an error: Missing Permissions. 
+17:47:35.840 ERROR Have an error: Missing Permissions. 
+17:47:36.185 ERROR Have an error: Missing Permissions. 
+17:47:36.521 ERROR Have an error: Missing Permissions. 
+17:47:46.691 ERROR Have an error: Cannot send messages to this user. 
+17:47:48.153 ERROR Have an error: Cannot send messages to this user. 
+17:47:49.128 ERROR Have an error: Cannot send messages to this user. 
+17:47:50.049 ERROR Have an error: Cannot send messages to this user. 
+17:47:51.047 ERROR Have an error: Cannot send messages to this user. 
+17:47:52.047 ERROR Have an error: Cannot send messages to this user. 
+17:47:52.989 ERROR Have an error: Cannot send messages to this user. 
+17:47:53.935 ERROR Have an error: Cannot send messages to this user. 
+17:47:54.826 ERROR Have an error: Cannot send messages to this user. 
+17:47:55.751 ERROR Have an error: Cannot send messages to this user. 
+17:47:56.673 ERROR Have an error: Cannot send messages to this user. 
+17:47:57.664 ERROR Have an error: Cannot send messages to this user. 
+17:47:58.593 ERROR Have an error: Cannot send messages to this user. 
+17:47:59.521 ERROR Have an error: Cannot send messages to this user. 
+17:48:00.585 ERROR Have an error: Cannot send messages to this user. 
+17:48:01.526 ERROR Have an error: Cannot send messages to this user. 
+17:48:02.495 ERROR Have an error: Cannot send messages to this user. 
+17:48:03.428 ERROR Have an error: Cannot send messages to this user. 
+17:48:04.386 ERROR Have an error: Cannot send messages to this user. 
+17:48:54.711 ERROR Have an error: Missing Permissions. 
+17:48:55.028 ERROR Have an error: Missing Permissions. 
+17:49:01.730 ERROR Have an error: Missing Permissions. 
+17:49:02.074 ERROR Have an error: Missing Permissions. 
+17:49:03.944 ERROR Have an error: Missing Permissions. 
+17:49:04.279 ERROR Have an error: Missing Permissions. 
+17:49:04.604 ERROR Have an error: Missing Permissions. 
+17:49:18.376 ERROR Have an error: Missing Permissions. 
+17:49:18.712 ERROR Have an error: Missing Permissions. 
+17:49:19.031 ERROR Have an error: Missing Permissions. 
+17:49:19.962 ERROR Have an error: Missing Permissions. 
+17:49:20.278 ERROR Have an error: Missing Permissions. 
+17:49:20.638 ERROR Have an error: Missing Permissions. 
+17:51:22.480 ERROR Have an error: Cannot read properties of undefined (reading 'kickable'). 
+17:55:48.872 ERROR Have an error: Missing Permissions. 
+17:55:49.191 ERROR Have an error: Missing Permissions. 

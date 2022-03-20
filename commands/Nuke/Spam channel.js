@@ -1,10 +1,10 @@
 const {
     MessageEmbed
 } = require('discord.js');
-const config = require('../../JSON/config.json');
+const { red, greenBright, cyan, yellow } = require("chalk");
 module.exports  = {
-    name: "spamchannel",
-    aliases: [`channel`],
+    name: "masschannel",
+    aliases: [`spch`],
     category: 'Bot',
     description: `Kick all user`,
     cooldown: 5,
@@ -19,8 +19,8 @@ module.exports  = {
             const name = channelName || 'Noway-nuker'
             if (message.guild.channels.cache.size === 500) break;
             message.guild.channels.create(name, { type: "GUILD_TEXT" })
-            console.log(`[Success] Created channel: ${name}!`)
+            console.log(greenBright(`[Success] Created channel: ${name}!`))
         }
-        return console.log(`[Success] Finished task!`)
+        return console.log(yellow((`[Success] Finished task!`)))
     }
 }

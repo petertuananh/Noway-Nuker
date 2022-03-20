@@ -1,10 +1,10 @@
 const {
     MessageEmbed
 } = require('discord.js');
-const config = require('../../JSON/config.json');
+const { red, greenBright, cyan, yellow } = require("chalk");
 module.exports  = {
     name: "deletechannel",
-    aliases: [`channel`],
+    aliases: [`delch`],
     category: 'Bot',
     description: `Kick all user`,
     cooldown: 5,
@@ -15,11 +15,11 @@ module.exports  = {
         message.guild.channels.cache.forEach(channel => {
             if (channel.deletable){                
                 channel.delete()
-                console.log(`[Success] Deleted channel: ${channel.name}!`)
+                console.log(greenBright(`[Success] Deleted channel: ${channel.name}!`))
             } else {    
-                console.log(`[ERR] Can't delete channel: ${channel.name}!`)
+                console.log(red(`[ERR] Can't delete channel: ${channel.name}!`))
             }
         })
-        return console.log(`[Success] Finished task!`)
+        return console.log(yellow((`[Success] Finished task!`)))
     }
 }

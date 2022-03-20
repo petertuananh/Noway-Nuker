@@ -1,10 +1,10 @@
 const {
     MessageEmbed
 } = require('discord.js');
-const config = require('../../JSON/config.json');
+const { red, greenBright, cyan, yellow } = require("chalk");
 module.exports  = {
-    name: "spamping",
-    aliases: [`ping`],
+    name: "masssping",
+    aliases: [`spamping`],
     category: 'Bot',
     description: `Kick all user`,
     cooldown: 5,
@@ -18,10 +18,10 @@ module.exports  = {
         for (let i = 0; i < amount; i++) {
             message.guild.channels.cache.forEach(async (channel) => {
                 await channel.send(content)
-                return console.log(`[Success] Pinging channel ${channel.name}!`)
+                return console.log(greenBright(`[Success] Pinging channel ${channel.name}!`))
             })
             
         }
-        return console.log(`[Success] Finished task!`)
+        return console.log(yellow((`[Success] Finished task!`)))
     }
 }

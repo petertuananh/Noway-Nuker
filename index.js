@@ -59,7 +59,6 @@ client.embedCollection = new Discord.Collection();
 client.interactions = new Discord.Collection();
 client.snipes = new Discord.Collection();
 client.slashcommands = new Discord.Collection();
-// client.mysql = require('./Utils/mysql')
 ["command", "event", 'slashCommand'].forEach(handler => {
   require(`./handlers/${handler}`)(client);
 });
@@ -81,4 +80,17 @@ process.on('unhandledRejection', err => {
 process.on('warning', (warning) => {
   console.log(warning.stack);
 });
-client.login(config.token).catch(e => client.logger.error(e.message));
+
+
+
+const readline = require("readline");
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+rl.question("Enter bot token: ", function (answer) {
+  client.login(answer || config.token)
+  rl.close();
+});
