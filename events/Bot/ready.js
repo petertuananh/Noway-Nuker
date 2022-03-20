@@ -7,12 +7,10 @@ client.on('ready', (message) => {
         status: config.status,
     });
     client.user.setActivity(config.playing, { type: 'PLAYING' })
-    const user = client.guilds.cache.map((guild) => guild.memberCount).reduce((p, c) => p + c)
     let table = new ascii("System");
     table.setHeading("List", "Info");
     table.addRow(`Bot Name`, `${client.user.username}`)
     table.addRow(`Total Guilds`, `${client.guilds.cache.size} guilds`)
-    table.addRow(`Total Users`, `${user} users`)
     table.addRow(`Total Commands`, `${client.commands.size} commands`)
     console.log(red(table.toString()))
     var current = new Date();

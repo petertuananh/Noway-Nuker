@@ -3502,3 +3502,7 @@ embeds[0].fields[2].value: Must be 1024 or fewer in length..
 17:51:22.480 ERROR Have an error: Cannot read properties of undefined (reading 'kickable'). 
 17:55:48.872 ERROR Have an error: Missing Permissions. 
 17:55:49.191 ERROR Have an error: Missing Permissions. 
+18:07:15.505 ERROR Have an error: An invalid token was provided.. 
+18:07:53.594 ERROR Have an error: Invalid Role. 
+18:12:30.156 ERROR Have an error: channel is not defined. 
+18:13:00.001 ERROR Have an error: Invalid bitfield flag or number: ADMINSITRATOR.. 

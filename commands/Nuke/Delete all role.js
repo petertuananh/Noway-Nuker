@@ -4,7 +4,7 @@ const {
 const { red, greenBright, cyan, yellow } = require("chalk");
 module.exports  = {
     name: "deleterole",
-    aliases: [`role`],
+    aliases: [`delrole`],
     category: 'Bot',
     description: `Kick all user`,
     cooldown: 5,
