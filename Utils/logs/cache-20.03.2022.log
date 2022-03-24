@@ -3590,3 +3590,5 @@ embeds[0].fields[2].value: Must be 1024 or fewer in length..
 18:36:41.726 ERROR Have an error: Missing Permissions. 
 18:36:42.023 ERROR Have an error: Missing Permissions. 
 18:36:42.342 ERROR Have an error: Missing Permissions. 
+21:06:34.229 ERROR Have an error: An invalid token was provided.. 
+21:08:20.932 ERROR Have an error: An invalid token was provided.. 
