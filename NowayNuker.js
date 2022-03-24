@@ -1,7 +1,6 @@
 console.clear();
 require('events').defaultMaxListeners = 15;
 const  Discord  = require('discord.js');
-const config = require('./JSON/config.json')
 const { red, greenBright, cyan, yellow } = require("chalk");
 
 const readline = require("readline");
@@ -60,7 +59,7 @@ const prefix = '?'
 
 client.on('ready', async (client) => {
     console.clear();
-    client.user.setActivity(config.playing, { type: 'PLAYING' })
+    client.user.setActivity('Noway Nuker', { type: 'PLAYING' })
     console.log(red('-----------------------------NOWAY NUKER BY PETER & PATOHRU-----------------------------'))
     console.log(red('|                           **************INFO**************                           |'))
     console.log(yellow('|                               Last Update: 21/3/2022                                 |'))
