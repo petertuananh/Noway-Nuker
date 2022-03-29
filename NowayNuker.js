@@ -11,7 +11,7 @@ const path = require('path');
 const axios = require('axios')
 const ascii = require('ascii-table')
 const prefix = '?'
-const status = 'idle'
+const status = 'idle'//hí ae
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
