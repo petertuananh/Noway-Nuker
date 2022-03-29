@@ -1,5 +1,5 @@
 console.clear();
-require('events').defaultMaxListeners = 15;
+require('events').defaultMaxListeners = 20;
 const { Client } = require('discord.js-selfbot-v13');
 const selfbot = new Client();
 const  Discord  = require('discord.js');
